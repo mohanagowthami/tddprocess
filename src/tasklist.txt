@@ -1,0 +1,9 @@
+productstore
+[]onAdd
+[]onRemoveFromList
+[]getProducts
+
+
+product model
+[]onCompare
+[]onRemove

@@ -1,0 +1,10 @@
+{
+  "products": [
+    { "id": 1, "name": "apple", "price": "$25", "condition": "frozen" },
+
+    { "id": 2, "name": "banana", "price": "$25", "condition": "frozen" },
+
+    { "id": 3, "name": "orange", "price": "$25", "condition": "frozen" },
+    { "id": 4, "name": "grapes", "price": "$25", "condition": "frozen" }
+  ]
+}

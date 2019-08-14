@@ -2,10 +2,9 @@ import TddProcess from "./index";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 describe("should test the form", () => {
-  const myMock = jest.fn();
-  const renderObject = render(<TddProcess />);
-  const { getByTestId } = renderObject;
   it("should test name fields", () => {
+    const renderObject = render(<TddProcess />);
+    const { getByTestId } = renderObject;
     fireEvent.focus(getByTestId("name"));
     expect(getByTestId("validation-name").innerHTML).toBe(" ");
     fireEvent.blur(getByTestId("name"));
@@ -16,20 +15,22 @@ describe("should test the form", () => {
     expect(getByTestId("validation-name").innerHTML).toBe(" ");
   });
 
-  it("should test phone number fields", () => {
+  it("should test name fields", () => {
+    const renderObject = render(<TddProcess />);
+    const { getByTestId } = renderObject;
     fireEvent.focus(getByTestId("phone-number"));
     expect(getByTestId("validation-phone-number").innerHTML).toBe(" ");
     fireEvent.blur(getByTestId("phone-number"));
     expect(getByTestId("validation-phone-number").innerHTML).toBe(
-      "please enter the name "
+      "please enter the 10 digit phone number "
     );
     fireEvent.change(getByTestId("phone-number"), { target: { value: "12" } });
     expect(getByTestId("validation-phone-number").innerHTML).toBe(
-      "please enter the 10 digit phone number"
+      "please enter the 10 digit phone number "
     );
     fireEvent.change(getByTestId("phone-number"), {
       target: { value: "9989984350" }
     });
-    expect(getByTestId("validation-phone-number").innerHTML).toBe("");
+    expect(getByTestId("validation-phone-number").innerHTML).toBe(" ");
   });
 });

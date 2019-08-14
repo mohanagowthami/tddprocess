@@ -4,26 +4,27 @@ import { observer } from "mobx-react";
 @observer
 class TddProcess extends Component {
   @observable input = "";
-
-  @observable isFocus = false;
+  @observable isFocusOut = false;
+  @observable isFocus = undefined;
   handlechnage = e => {
     this.input = e.target.value;
   };
-  handlefocus = () => {
-    this.isFocus = true;
-    console.log(this.isFocus);
+
+  handleFocus = () => {
+    this.isFocus = this.isFocus == undefined ? true : !this.isFocus;
   };
 
   render() {
     const error =
-      this.input == "" && this.isFocus == true ? "please enter the name" : "";
+      this.input == "" && this.isFocus == false ? "please enter the name" : "";
     return (
       <div>
         <input
           type="text"
           data-testid="name"
-          onFocus={this.handlefocus}
+          onBlur={this.handleFocus}
           onChange={this.handlechnage}
+          onFocus={this.handleFocus}
         />
         <div data-testid="validation-name">{error} </div>
       </div>

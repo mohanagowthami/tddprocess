@@ -7,8 +7,12 @@ describe("should test the form", () => {
     const renderObject = render(<TddProcess />);
     const { getByTestId } = renderObject;
     fireEvent.focus(getByTestId("name"));
+    expect(getByTestId("validation-name").innerHTML).toBe(" ");
+    fireEvent.blur(getByTestId("name"));
     expect(getByTestId("validation-name").innerHTML).toBe(
       "please enter the name "
     );
+    fireEvent.change(getByTestId("name"), { target: { value: "12" } });
+    expect(getByTestId("validation-name").innerHTML).toBe(" ");
   });
 });

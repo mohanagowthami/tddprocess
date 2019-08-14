@@ -38,9 +38,24 @@ describe("should test the form", () => {
     const myMock = jest.fn();
     const renderObject = render(<TddProcess onChangeSelect={myMock} />);
     const { getByTestId } = renderObject;
-    fireEvent.change(getByTestId("select"), {
-      target: { value: 1 }
+    const numberOfPlayers = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "10+"
+    ];
+    numberOfPlayers.forEach(element => {
+      fireEvent.change(getByTestId("select"), {
+        target: { value: element }
+      });
+      expect(myMock).toHaveBeenCalled();
     });
-    expect(myMock).toHaveBeenCalled();
   });
 });

@@ -33,4 +33,13 @@ describe("should test the form", () => {
     });
     expect(getByTestId("validation-phone-number").innerHTML).toBe(" ");
   });
+
+  it(" should test the drop down box", () => {
+    const renderObject = render(<TddProcess />);
+    const { getByTestId } = renderObject;
+    fireEvent.change(getByTestId("select"), {
+      target: { value: 1 }
+    });
+    expect(getByTestId("select".innerHTML)).toBe(1);
+  });
 });

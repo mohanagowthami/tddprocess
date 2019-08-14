@@ -15,7 +15,7 @@ describe("should test the form", () => {
     expect(getByTestId("validation-name").innerHTML).toBe(" ");
   });
 
-  it("should test name fields", () => {
+  it("should test phone number fields", () => {
     const renderObject = render(<TddProcess />);
     const { getByTestId } = renderObject;
     fireEvent.focus(getByTestId("phone-number"));
@@ -35,11 +35,12 @@ describe("should test the form", () => {
   });
 
   it(" should test the drop down box", () => {
-    const renderObject = render(<TddProcess />);
+    const myMock = jest.fn();
+    const renderObject = render(<TddProcess onChangeSelect={myMock} />);
     const { getByTestId } = renderObject;
     fireEvent.change(getByTestId("select"), {
       target: { value: 1 }
     });
-    expect(getByTestId("select".innerHTML)).toBe(1);
+    expect(myMock).toHaveBeenCalled();
   });
 });

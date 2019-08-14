@@ -26,6 +26,9 @@ class TddProcess extends Component {
   handleFocus = () => {
     this.isFocus = this.isFocus == undefined ? true : !this.isFocus;
   };
+  handleChangeSelect = e => {
+    this.props.onChangeSelect(e.target.value);
+  };
 
   render() {
     const error =
@@ -52,6 +55,13 @@ class TddProcess extends Component {
           onFocus={this.handleFocusNumber}
         />
         <div data-testid="validation-phone-number">{errorNumber} </div>
+        <select data-testid="select" onChange={this.handleChangeSelect}>
+          <option value="1" selected>
+            1{" "}
+          </option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
       </div>
     );
   }

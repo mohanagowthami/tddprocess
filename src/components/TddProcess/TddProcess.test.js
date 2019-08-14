@@ -34,7 +34,7 @@ describe("should test the form", () => {
     expect(getByTestId("validation-phone-number").innerHTML).toBe(" ");
   });
 
-  it(" should test the drop down box", () => {
+  it(" should test the selecting the number of people in drop down box and it is call back with same value or not", () => {
     const myMock = jest.fn();
     const renderObject = render(<TddProcess onChangeSelect={myMock} />);
     const { getByTestId } = renderObject;

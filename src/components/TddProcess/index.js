@@ -37,6 +37,11 @@ class TddProcess extends Component {
       this.inputNumber.length < 10 && this.isFocusNumber == false
         ? "please enter the 10 digit phone number"
         : "";
+    const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "10+"];
+    const optionArray = numbers.map(number => {
+      return <option value={number}> {number}</option>;
+    });
+    console.log(" option", optionArray);
     return (
       <div>
         <input
@@ -56,11 +61,7 @@ class TddProcess extends Component {
         />
         <div data-testid="validation-phone-number">{errorNumber} </div>
         <select data-testid="select" onChange={this.handleChangeSelect}>
-          <option value="1" selected>
-            1{" "}
-          </option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          {optionArray}
         </select>
       </div>
     );

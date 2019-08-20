@@ -58,4 +58,27 @@ describe("should test the form", () => {
       expect(myMock).toHaveBeenCalled();
     });
   });
+ it(" should test the calendar field in the form",()=>
+ {
+
+
+  expect(getByTestId("userSelectedMonth").innerHTML).toBe("august")
+  expect(getByTestId("userSelectedYear").innerHTML).toBe("2019")
+ fireEvent.click(getByTestId("selectedYear"))
+ fireEvent.change(getByTestId("yearList"),{
+   target:{value:"2020"}
+ })
+
+
+ fireEvent.click(getByTestId("selectedMonth"))
+ fireEvent.change(getByTestId("monthList"),{
+  target:{value:"sep"}
+})
+expect(getByTestId("userSelectedMonth").innerHTML).toBe("september")
+expect(getByTestId("userSelectedYear").innerHTML).toBe("2020")
+    
+
+ })
+
 });
+

@@ -1,9 +1,13 @@
-productstore
-[]onAdd
-[]onRemoveFromList
-[]getProducts
 
 
-product model
-[]onCompare
-[]onRemove
+
+
+
+
+
+
+[*]name field
+[*]mobile number field
+[*]number of people field
+[]calender field
+[]book now 

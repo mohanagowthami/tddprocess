@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
+import Calendar from "./calendar.js"
 @observer
 class TddProcess extends Component {
   @observable input = "";
@@ -63,6 +64,7 @@ class TddProcess extends Component {
         <select data-testid="select" onChange={this.handleChangeSelect}>
           {optionArray}
         </select>
+        <Calendar/>
       </div>
     );
   }

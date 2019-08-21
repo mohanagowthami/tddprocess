@@ -1,5 +1,5 @@
 import TddProcess from "./index";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent, cleanup, queryByText } from "@testing-library/react";
 import React from "react";
 describe("should test the form", () => {
   it("should test name fields", () => {
@@ -63,10 +63,13 @@ describe("should test the form", () => {
 
   const renderObject = render(<TddProcess  />);
   const { getByTestId,getByText } = renderObject;
-  expect(getByTestId("userSelectedMonth").innerHTML).toBe("August,")
-  fireEvent.click(getByTestId("userSelectedMonth"))
+
+  expect(getByText("August,")).toBeDefined();
+  fireEvent.click(getByText("August,"))
   fireEvent.click(getByText("December"))
-  expect(getByTestId("userSelectedMonth").innerHTML).toBe("December,")
+  expect(getByText()
+  expect(getByText("December,")).toBeDefined();
+  
   expect(getByTestId("userSelectedYear").innerHTML).toBe("2019")
 fireEvent.click(getByTestId("userSelectedYear"))
  fireEvent.click(getByTestId("2020"))

@@ -62,12 +62,23 @@ describe("should test the form", () => {
  {
 
   const renderObject = render(<TddProcess  />);
-  const { getByTestId } = renderObject;
+  const { getByTestId,getByText } = renderObject;
   expect(getByTestId("userSelectedMonth").innerHTML).toBe("August,")
+  fireEvent.click(getByTestId("userSelectedMonth"))
+  fireEvent.click(getByText("December"))
+  expect(getByTestId("userSelectedMonth").innerHTML).toBe("December,")
   expect(getByTestId("userSelectedYear").innerHTML).toBe("2019")
 fireEvent.click(getByTestId("userSelectedYear"))
  fireEvent.click(getByTestId("2020"))
   expect(getByTestId("userSelectedYear").innerHTML).toBe("2020")
+  
+  fireEvent.click(getByText("December"))
+  expect(getByTestId("userSelectedMonth").innerHTML).toBe("December,")
+  fireEvent.click(getByTestId("next"))
+  expect(getByTestId("userSelectedMonth").innerHTML).toBe("January,")
+  expect(getByTestId("userSelectedYear").innerHTML).toBe("2021")
+
+  
     
 
  })

@@ -284,6 +284,7 @@ export default class Calendar extends React.Component {
           </span>
 
           <span
+           data-testid="next"
             onClick={e => {
               this.onNext();
             }}

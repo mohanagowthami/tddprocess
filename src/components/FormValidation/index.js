@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-import Calendar from "./calendar.js"
+//import Calendar from "./calendar.js"
 import {FlexContainer,Input,Div} from "./styleComponents"
 
 @observer
@@ -12,6 +14,12 @@ class FormValidation extends Component {
   @observable isFocus = undefined;
   @observable isFocusPhoneNumber = undefined;
   @observable validation=false;
+  @observable startDate= new Date();
+  handleChangeDate=(date)=>
+  {
+    console.log("date",date);
+    this.startDate=date;
+  }
 
   handlechnage = e => {
     this.playerName = e.target.value;
@@ -78,12 +86,16 @@ class FormValidation extends Component {
           {optionArray}
         </select>
         <Div>
-       <Calendar/>
+        <DatePicker
+    selected={this.startDate}
+    onChange={this.handleChangeDate}
+    dateFormat="MMMM d, yyyy "
+    placeholder="calendar"
+    
+/>
         </Div>
       <button onClick={this.validationForm}>BookNow</button>
-        
-        
-        </FlexContainer>
+       </FlexContainer>
     );
   }
 }

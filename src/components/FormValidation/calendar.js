@@ -261,6 +261,7 @@ export default class Calendar extends React.Component {
             }}
             className="calendar-button button-prev"
           />
+          <span>{this.state.selectedDay}</span>
           {!this.state.showMonthTable && !this.state.showYearEditor && (
             <span
               onClick={e => {

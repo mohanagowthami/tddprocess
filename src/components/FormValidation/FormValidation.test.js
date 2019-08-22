@@ -1,6 +1,7 @@
 import FormValidation from "./index";
 import { render, fireEvent, cleanup, queryByText } from "@testing-library/react";
 import React from "react";
+import DatePicker from "react-datepicker";
 describe("should test the form", () => {
   it("should test name fields", () => {
     const renderObject = render(<FormValidation />);
@@ -60,22 +61,14 @@ describe("should test the form", () => {
   });
  it(" should test the calendar field in the form",()=>
  {
-
   const renderObject = render(<FormValidation  />);
-  const { getByTestId,getByText } = renderObject;
-  expect(getByText("August,")).toBeDefined();
-  fireEvent.click(getByText("August,"))
-  fireEvent.click(getByText("December"))
-  expect(getByText("December,")).toBeDefined();
-  expect(getByText("2019")).toBeDefined();
-  fireEvent.click(getByText("2019"))
- fireEvent.click(getByText("2020"))
-  expect(getByText("2020")).toBeDefined();
-  fireEvent.click(getByText("December"))
-  expect(getByText("December,")).toBeDefined();
- fireEvent.click(getByTestId("next"))
-  expect(getByText("January,")).toBeDefined();
-  expect(getByText("2021")).toBeDefined();
+  const { getByPlaceholderText,getByText } = renderObject;
+  console.log("renderobject",renderObject);
+  const renderObject2 = render(<DatePicker  />);
+  expect(renderObject2).toBeDefined();
+      
+
+  ;
  })
  
  it("should test the submit button validation ",()=>{

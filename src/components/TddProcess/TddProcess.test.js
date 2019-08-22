@@ -63,30 +63,37 @@ describe("should test the form", () => {
 
   const renderObject = render(<TddProcess  />);
   const { getByTestId,getByText } = renderObject;
-
   expect(getByText("August,")).toBeDefined();
   fireEvent.click(getByText("August,"))
   fireEvent.click(getByText("December"))
-  
   expect(getByText("December,")).toBeDefined();
-  
   expect(getByText("2019")).toBeDefined();
-fireEvent.click(getByText("2019"))
+  fireEvent.click(getByText("2019"))
  fireEvent.click(getByText("2020"))
   expect(getByText("2020")).toBeDefined();
   fireEvent.click(getByText("December"))
-  
   expect(getByText("December,")).toBeDefined();
- 
-  fireEvent.click(getByTestId("next"))
+ fireEvent.click(getByTestId("next"))
   expect(getByText("January,")).toBeDefined();
   expect(getByText("2021")).toBeDefined();
+ })
  
+ it("should test the submit button validation ",()=>{
+  const renderObject = render(<TddProcess  />);
+  const { getByPlaceholderText,getByText } = renderObject;
 
-  
-    
+  fireEvent.click(getByText("Book"))
+  expect(getByText("required")).toBeDefined();
+  expect(getByText("enter 10 digit phone number")).toBeDefined();
+  expect(getByText("please select date")).toBeDefined();
+  fireEvent.change(getByPlaceholderText("playerName"),{
+    target:{value:"gowthami"}
+
+  })
+  fireEvent.click(getByText("BookNow"))
+  expect(getByText("required")).not.toBeDefined();
 
  })
-
 });
+
 

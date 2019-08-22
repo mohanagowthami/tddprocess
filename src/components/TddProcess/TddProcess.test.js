@@ -67,19 +67,21 @@ describe("should test the form", () => {
   expect(getByText("August,")).toBeDefined();
   fireEvent.click(getByText("August,"))
   fireEvent.click(getByText("December"))
-  expect(getByText()
+  
   expect(getByText("December,")).toBeDefined();
   
-  expect(getByTestId("userSelectedYear").innerHTML).toBe("2019")
-fireEvent.click(getByTestId("userSelectedYear"))
- fireEvent.click(getByTestId("2020"))
-  expect(getByTestId("userSelectedYear").innerHTML).toBe("2020")
-  
+  expect(getByText("2019")).toBeDefined();
+fireEvent.click(getByText("2019"))
+ fireEvent.click(getByText("2020"))
+  expect(getByText("2020")).toBeDefined();
   fireEvent.click(getByText("December"))
-  expect(getByTestId("userSelectedMonth").innerHTML).toBe("December,")
+  
+  expect(getByText("December,")).toBeDefined();
+ 
   fireEvent.click(getByTestId("next"))
-  expect(getByTestId("userSelectedMonth").innerHTML).toBe("January,")
-  expect(getByTestId("userSelectedYear").innerHTML).toBe("2021")
+  expect(getByText("January,")).toBeDefined();
+  expect(getByText("2021")).toBeDefined();
+ 
 
   
     

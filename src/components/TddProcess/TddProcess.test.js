@@ -82,16 +82,17 @@ describe("should test the form", () => {
   const renderObject = render(<TddProcess  />);
   const { getByPlaceholderText,getByText } = renderObject;
 
-  fireEvent.click(getByText("Book"))
-  expect(getByText("required")).toBeDefined();
-  expect(getByText("enter 10 digit phone number")).toBeDefined();
-  expect(getByText("please select date")).toBeDefined();
+  fireEvent.click(getByText("BookNow"))
+  expect(getByText("please enter the name")).toBeDefined();
+  expect(getByText("please enter the 10 digit phone number")).toBeDefined();
+  // expect(getByText("please select date")).toBeDefined();
   fireEvent.change(getByPlaceholderText("playerName"),{
     target:{value:"gowthami"}
 
   })
   fireEvent.click(getByText("BookNow"))
-  expect(getByText("required")).not.toBeDefined();
+ // expect(getByText("please enter the name")).not.toBeDefined();
+  expect(getByPlaceholderText("playerName")).toBeDefined();
 
  })
 });

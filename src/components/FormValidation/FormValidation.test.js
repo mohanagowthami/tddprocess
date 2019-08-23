@@ -5,34 +5,32 @@ import DatePicker from "react-datepicker";
 describe("should test the form", () => {
   it("should test name fields", () => {
     const renderObject = render(<FormValidation />);
-    const { getByTestId } = renderObject;
-    fireEvent.focus(getByTestId("name"));
-    expect(getByTestId("validation-name").innerHTML).toBe(" ");
-    fireEvent.blur(getByTestId("name"));
-    expect(getByTestId("validation-name").innerHTML).toBe(
-      "please enter the name "
-    );
-    fireEvent.change(getByTestId("name"), { target: { value: "12" } });
-    expect(getByTestId("validation-name").innerHTML).toBe(" ");
+    const { getByPlaceholderText,getByText,queryByText} = renderObject;
+    fireEvent.focus(getByPlaceholderText("name"));
+    expect(queryByText("please enter the name")).toBeNull();
+    fireEvent.blur(getByPlaceholderText("name"));
+    expect(getByText("please enter the name")).toBeDefined();
+    fireEvent.change(getByPlaceholderText("name"), { target: { value: "12" } });
+    expect(queryByText("please enter the name")).toBeNull();
+    
   });
 
   it("should test phone number fields", () => {
     const renderObject = render(<FormValidation />);
-    const { getByTestId } = renderObject;
-    fireEvent.focus(getByTestId("phone-number"));
-    expect(getByTestId("validation-phone-number").innerHTML).toBe(" ");
-    fireEvent.blur(getByTestId("phone-number"));
-    expect(getByTestId("validation-phone-number").innerHTML).toBe(
-      "please enter the 10 digit phone number "
-    );
-    fireEvent.change(getByTestId("phone-number"), { target: { value: "12" } });
-    expect(getByTestId("validation-phone-number").innerHTML).toBe(
-      "please enter the 10 digit phone number "
-    );
-    fireEvent.change(getByTestId("phone-number"), {
+    const { getByPlaceholderText,queryByText } = renderObject;
+    fireEvent.focus(getByPlaceholderText("phone number"));
+    expect(queryByText("please enter the 10 digit phone number ")).toBeNull();
+    fireEvent.blur(getByPlaceholderText("phone number"));
+    expect(queryByText("please enter the 10 digit phone number")).not.toBeNull();
+    
+    fireEvent.change(getByPlaceholderText("phone number"), { target: { value: "12" } });
+    expect(queryByText("please enter the 10 digit phone number")).not.toBeNull();
+    
+    fireEvent.change(getByPlaceholderText("phone number"), {
       target: { value: "9989984350" }
     });
-    expect(getByTestId("validation-phone-number").innerHTML).toBe(" ");
+    expect(queryByText("please enter the 10 digit phone number ")).toBeNull();
+    
   });
 
   it(" should test the selecting the number of people in drop down box and it is call back with same value or not", () => {
@@ -63,13 +61,9 @@ describe("should test the form", () => {
  {
   const renderObject = render(<FormValidation  />);
   const { getByPlaceholderText,getByText } = renderObject;
-  console.log("renderobject",renderObject);
   const renderObject2 = render(<DatePicker  />);
   expect(renderObject2).toBeDefined();
-      
-
-  ;
- })
+      })
  
  it("should test the submit button validation ",()=>{
   const renderObject = render(<FormValidation  />);

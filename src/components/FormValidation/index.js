@@ -67,7 +67,7 @@ class FormValidation extends Component {
         <Input
         placeholder="name"
           type="text"
-          data-testid="name"
+          
           onBlur={this.handleFocus}
           onChange={this.handlechnage}
           onFocus={this.handleFocus}
@@ -76,6 +76,7 @@ class FormValidation extends Component {
         
         <div data-testid="validation-name">{error} </div>
         <Input
+          placeholder="phone number"
           type="text"
           data-testid="phone-number"
           onBlur={this.handleFocusNumber}
